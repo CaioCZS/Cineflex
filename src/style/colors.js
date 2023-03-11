@@ -1,0 +1,6 @@
+export const selecionado = "rgba(26, 174, 158, 1)"
+export const bordaSelecionado = "rgba(14, 125, 113, 1)"
+export const disponivel = "rgba(195, 207, 217, 1)"
+export const bordaDisponivel = "rgba(123, 139, 153, 1)"
+export const indisponivel = "rgba(251, 225, 146, 1)"
+export const bordaIndisponivel = "rgba(247, 197, 43, 1) "
