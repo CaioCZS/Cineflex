@@ -9,7 +9,7 @@ export default function SessionsPage() {
   const [sessionsList , setSessionsList] = useState([])
   const [days, setDays]= useState([])
   const params = useParams()
-  const idFilme = params.idFilme.replace(":","")
+  const idFilme = params.idFilme
   useEffect(()=>{
     const URL = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`//trocar id /movies/ID/showtimes
     const promise = axios.get(URL)

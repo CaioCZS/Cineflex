@@ -7,7 +7,7 @@ export default function Movie({movieData}) {
     return (
 
     <MovieContainer>
-      <Link to={`/sessoes/:${id}`}>
+      <Link to={`/sessoes/${id}`}>
       <img
         src={posterURL}
         alt={`poster-${title}`}

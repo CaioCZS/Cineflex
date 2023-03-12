@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import {
   selecionado,
   bordaSelecionado,
@@ -17,8 +18,10 @@ export default function SeatsPage() {
  const [time , setTime] = useState("")
  const [day, setDay] = useState("")
  
+ const params = useParams()
+const idSessao = params.idSessao
  useEffect(()=>{
-    const URL = "https://mock-api.driven.com.br/api/v8/cineflex/showtimes/6/seats"// trocar id showtimes/ID/seats
+    const URL = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`// trocar id showtimes/ID/seats
     const promise = axios.get(URL)
     promise.then(res =>{
         setSeats(res.data.seats)
