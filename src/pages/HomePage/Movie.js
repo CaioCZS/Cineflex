@@ -1,15 +1,18 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { Link } from "react-router-dom";
+
 export default function Movie({movieData}) {
-     const {title , posterURL} = movieData
+     const {title , posterURL, id} = movieData
     
     return (
+
     <MovieContainer>
+      <Link to={`/sessoes/:${id}`}>
       <img
         src={posterURL}
         alt={`poster-${title}`}
       />
+      </Link>
     </MovieContainer>
   );
 }
