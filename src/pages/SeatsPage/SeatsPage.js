@@ -14,7 +14,14 @@ import FooterSeats from "./FooterSeats";
 import Seats from "./Seats";
 import FormBuy from "./FormBuy";
 
-export default function SeatsPage() {
+export default function SeatsPage({
+  setUserName,
+  userName,
+  userCPF,
+  setUserCPF,
+  reservedSeats,
+  setReservedSeats,
+}) {
   const [seats, setSeats] = useState([]);
   const [movieDetails, setMovieDetails] = useState([]);
   const [time, setTime] = useState("");
@@ -37,7 +44,13 @@ export default function SeatsPage() {
   return (
     <PageContainer>
       Selecione o(s) assento(s)
-      <Seats seats={seats} selected={selected} setSelected={setSelected} />
+      <Seats
+        reservedSeats={reservedSeats}
+        setReservedSeats={setReservedSeats}
+        seats={seats}
+        selected={selected}
+        setSelected={setSelected}
+      />
       <CaptionContainer>
         <CaptionItem>
           <CaptionCircle
@@ -58,7 +71,13 @@ export default function SeatsPage() {
           Indisponível
         </CaptionItem>
       </CaptionContainer>
-      <FormBuy selected={selected} />
+      <FormBuy
+        userName={userName}
+        setUserName={setUserName}
+        userCPF={userCPF}
+        setUserCPF={setUserCPF}
+        selected={selected}
+      />
       <FooterSeats
         title={movieDetails.title}
         weekday={day}

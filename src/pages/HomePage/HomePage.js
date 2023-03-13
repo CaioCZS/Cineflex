@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Movie from "./Movie";
 
-export default function HomePage() {
+export default function HomePage({setMovieName}) {
     const [moviesList , setMoviesList]= useState([])
     useEffect(()=>{
 const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies"
@@ -14,7 +14,7 @@ promise.then(res => setMoviesList(res.data)).catch(err => console.log(err.respon
     <PageContainer>
       Selecione o filme
       <ListContainer>
-        {moviesList.map(m => <Movie key={m.id} movieData={m}/>)}
+        {moviesList.map(m => <Movie setMovieName={setMovieName} key={m.id} movieData={m}/>)}
       </ListContainer>
     </PageContainer>
   );

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import styled from "styled-components";
 import HomePage from "../pages/HomePage/HomePage";
@@ -6,15 +7,53 @@ import SessionsPage from "../pages/SessionsPage/SessionsPage";
 import SuccessPage from "../pages/SuccessPage/SuccessPage";
 
 export default function App() {
+  const [movieName, setMovieName] = useState("");
+  const [movieDate, setMovieDate] = useState("");
+  const [movieTime, setMovieTime] = useState("");
+  const [reservedSeats, setReservedSeats] = useState([]);
+  const [userName, setUserName] = useState("");
+  const [userCPF, setUserCPF] = useState("");
   return (
     <>
       <NavContainer>CINEFLEX</NavContainer>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/sessoes/:idFilme" element={<SessionsPage />} />
-          <Route path="/assentos/:idSessao" element={<SeatsPage />} />
-          <Route path="/sucesso" element={<SuccessPage />} />
+          <Route path="/" element={<HomePage setMovieName={setMovieName} />} />
+          <Route
+            path="/sessoes/:idFilme"
+            element={
+              <SessionsPage
+                setMovieDate={setMovieDate}
+                setMovieTime={setMovieTime}
+              />
+            }
+          />
+          <Route
+            path="/assentos/:idSessao"
+            element={
+              <SeatsPage
+                reservedSeats={reservedSeats}
+                setReservedSeats={setReservedSeats}
+                userName={userName}
+                setUserName={setUserName}
+                userCPF={userCPF}
+                setUserCPF={setUserCPF}
+              />
+            }
+          />
+          <Route
+            path="/sucesso"
+            element={
+              <SuccessPage
+                movieName={movieName}
+                movieDate={movieDate}
+                movieTime={movieTime}
+                reservedSeats={reservedSeats}
+                userName={userName}
+                userCPF={userCPF}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

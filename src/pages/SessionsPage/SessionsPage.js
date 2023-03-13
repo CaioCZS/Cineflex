@@ -5,7 +5,7 @@ import Session from "./Session";
 import FooterSession from "./FooterSession";
 import { useParams } from "react-router-dom";
 
-export default function SessionsPage() {
+export default function SessionsPage({setMovieDate,setMovieTime}) {
   const [sessionsList , setSessionsList] = useState([])
   const [days, setDays]= useState([])
   const params = useParams()
@@ -22,7 +22,7 @@ export default function SessionsPage() {
     <PageContainer>
       Selecione o horário
       <div>
-        {days.map(d =><Session key={d.id} date={d.date} weekday={d.weekday} showtimes={d.showtimes}/>)}
+        {days.map(d =><Session setMovieDate={setMovieDate} setMovieTime={setMovieTime} key={d.id} date={d.date} weekday={d.weekday} showtimes={d.showtimes}/>)}
       </div>
       <FooterSession title={sessionsList.title} posterURL={sessionsList.posterURL}/>
     </PageContainer>

@@ -1,10 +1,13 @@
 import styled from "styled-components";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-export default function FormBuy({ selected }) {
-  const [userName, setUserName] = useState("");
-  const [userCPF, setUserCPF] = useState("");
+export default function FormBuy({
+  selected,
+  setUserName,
+  userName,
+  userCPF,
+  setUserCPF,
+}) {
   const navigate = useNavigate();
   function finishReserve(e) {
     e.preventDefault();
@@ -40,7 +43,9 @@ export default function FormBuy({ selected }) {
         placeholder="Digite seu CPF..."
         required
       />
-      <button data-test="book-seat-btn" type="submit">Reservar Assento(s)</button>
+      <button data-test="book-seat-btn" type="submit">
+        Reservar Assento(s)
+      </button>
     </FormContainer>
   );
 }
