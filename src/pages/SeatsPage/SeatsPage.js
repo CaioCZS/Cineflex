@@ -21,6 +21,7 @@ export default function SeatsPage({
   setUserCPF,
   reservedSeats,
   setReservedSeats,
+  setLastPage
 }) {
   const [seats, setSeats] = useState([]);
   const [movieDetails, setMovieDetails] = useState([]);
@@ -77,6 +78,7 @@ export default function SeatsPage({
         userCPF={userCPF}
         setUserCPF={setUserCPF}
         selected={selected}
+        setLastPage={setLastPage}
       />
       <FooterSeats
         title={movieDetails.title}

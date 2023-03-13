@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export default function Movie({movieData,setMovieName}) {
+export default function Movie({movieData,setMovieName,setMovieID}) {
      const {title , posterURL, id} = movieData
     
     return (
 
-    <MovieContainer onClick={() => setMovieName(title)} data-test="movie">
+    <MovieContainer onClick={() =>{ 
+      setMovieID(id)
+      setMovieName(title)}} data-test="movie">
       <Link to={`/sessoes/${id}`}>
       <img
         src={posterURL}

@@ -6,7 +6,10 @@ export default function SuccessPage({
   movieTime,
   reservedSeats,
   userName,
-  userCPF
+  userCPF,
+  setMovieName,
+  resetAll,
+  setLastPage
 }) {
   const navigate = useNavigate();
   return (
@@ -38,7 +41,12 @@ export default function SuccessPage({
         <p>CPF: {userCPF}</p>
       </TextContainer>
 
-      <button data-test="go-home-btn" onClick={() => navigate("/")}>
+      <button data-test="go-home-btn" onClick={() =>{ 
+        navigate("/")
+        setMovieName("")
+        resetAll()
+        setLastPage(false)
+        }}>
         Voltar para Home
       </button>
     </PageContainer>

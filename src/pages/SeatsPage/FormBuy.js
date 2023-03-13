@@ -7,6 +7,7 @@ export default function FormBuy({
   userName,
   userCPF,
   setUserCPF,
+  setLastPage
 }) {
   const navigate = useNavigate();
   function finishReserve(e) {
@@ -17,8 +18,10 @@ export default function FormBuy({
       const body = { name: userName, cpf: userCPF, ids: selected };
       const promise = axios.post(URL, body);
       promise
-        .then(navigate("/sucesso"))
+        .then( navigate("/sucesso"))
         .catch((err) => alert(err.response.data));
+        setLastPage(true)
+
     } else {
       alert("Selecione pelo menos um assento");
     }

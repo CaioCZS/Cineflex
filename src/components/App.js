@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import styled from "styled-components";
+
 import HomePage from "../pages/HomePage/HomePage";
 import SeatsPage from "../pages/SeatsPage/SeatsPage";
 import SessionsPage from "../pages/SessionsPage/SessionsPage";
 import SuccessPage from "../pages/SuccessPage/SuccessPage";
+import Header from "./Header";
 
 export default function App() {
   const [movieName, setMovieName] = useState("");
@@ -13,12 +14,33 @@ export default function App() {
   const [reservedSeats, setReservedSeats] = useState([]);
   const [userName, setUserName] = useState("");
   const [userCPF, setUserCPF] = useState("");
+  const [lastPage, setLastPage] = useState(false);
+  const [movieID, setMovieID] = useState("");
+  function resetAll(){
+    setUserName("")
+    setUserCPF("")
+    setReservedSeats([])
+  }
   return (
     <>
-      <NavContainer>CINEFLEX</NavContainer>
       <BrowserRouter>
+        <Header
+          setMovieDate={setMovieDate}
+          movieID={movieID}
+          movieName={movieName}
+          setMovieName={setMovieName}
+          lastPage={lastPage}
+          movieDate={movieDate}
+          resetAll={resetAll}
+        />
+
         <Routes>
-          <Route path="/" element={<HomePage setMovieName={setMovieName} />} />
+          <Route
+            path="/"
+            element={
+              <HomePage setMovieID={setMovieID} setMovieName={setMovieName} />
+            }
+          />
           <Route
             path="/sessoes/:idFilme"
             element={
@@ -38,6 +60,7 @@ export default function App() {
                 setUserName={setUserName}
                 userCPF={userCPF}
                 setUserCPF={setUserCPF}
+                setLastPage={setLastPage}
               />
             }
           />
@@ -51,6 +74,10 @@ export default function App() {
                 reservedSeats={reservedSeats}
                 userName={userName}
                 userCPF={userCPF}
+                setMovieName={setMovieName}
+                setReservedSeats={setReservedSeats}
+                resetAll={resetAll}
+                setLastPage={setLastPage}
               />
             }
           />
@@ -59,21 +86,3 @@ export default function App() {
     </>
   );
 }
-
-const NavContainer = styled.div`
-  width: 100%;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #c3cfd9;
-  color: #e8833a;
-  font-family: "Roboto", sans-serif;
-  font-size: 34px;
-  position: fixed;
-  top: 0;
-  a {
-    text-decoration: none;
-    color: #e8833a;
-  }
-`;
