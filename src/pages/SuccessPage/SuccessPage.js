@@ -1,13 +1,14 @@
 import styled from "styled-components";
-
+import { useNavigate } from "react-router-dom";
 export default function SuccessPage() {
+  const navigate = useNavigate()
   return (
     <PageContainer>
       <h1>
         Pedido feito <br /> com sucesso!
       </h1>
 
-      <TextContainer>
+      <TextContainer  data-test="movie-info">
         <strong>
           <p>Filme e sessão</p>
         </strong>
@@ -15,7 +16,7 @@ export default function SuccessPage() {
         <p>03/03/2023 - 14:00</p>
       </TextContainer>
 
-      <TextContainer>
+      <TextContainer data-test="seats-info" >
         <strong>
           <p>Ingressos</p>
         </strong>
@@ -24,7 +25,7 @@ export default function SuccessPage() {
         <p>Assento 03</p>
       </TextContainer>
 
-      <TextContainer>
+      <TextContainer data-test="client-info" >
         <strong>
           <p>Comprador</p>
         </strong>
@@ -32,7 +33,7 @@ export default function SuccessPage() {
         <p>CPF: 123.456.789-10</p>
       </TextContainer>
 
-      <button>Voltar para Home</button>
+      <button data-test="go-home-btn" onClick={()=> navigate("/")}>Voltar para Home</button>
     </PageContainer>
   );
 }

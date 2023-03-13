@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function FooterSession({ title, posterURL }) {
   return (
-    <FooterContainer>
+    <FooterContainer data-test="footer">
       <div>
         <img src={posterURL} alt={`poster-${title}`} />
       </div>

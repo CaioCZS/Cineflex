@@ -4,10 +4,10 @@ export default function Session({date, weekday, showtimes}){
 
   return (
 
-        <SessionContainer>
+        <SessionContainer data-test="movie-day">
           {`${weekday} -${date}`}
           <ButtonsContainer>
-            {showtimes.map(s => <Link to={`/assentos/${s.id}`} key={s.id}><button>{s.name}</button></Link>)}
+            {showtimes.map(s => <Link data-test="showtime"  to={`/assentos/${s.id}`} key={s.id}><button>{s.name}</button></Link>)}
           </ButtonsContainer>
         </SessionContainer>
     )

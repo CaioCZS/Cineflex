@@ -20,7 +20,7 @@ export default function Seats({seats,selected,setSelected}){
   }  
   return(
         <SeatsContainer>
-        {seats.map(s => <SeatItem onClick={()=> reserveSeat(s.id , s.isAvailable)} select={selected.includes(s.id)} available={s.isAvailable} key={s.id}>{s.name}</SeatItem>)}
+        {seats.map(s => <SeatItem data-test="seat" onClick={()=> reserveSeat(s.id , s.isAvailable)} select={selected.includes(s.id)} available={s.isAvailable} key={s.id}>{s.name}</SeatItem>)}
       </SeatsContainer>
 
     )

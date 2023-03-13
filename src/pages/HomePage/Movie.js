@@ -6,7 +6,7 @@ export default function Movie({movieData}) {
     
     return (
 
-    <MovieContainer>
+    <MovieContainer  data-test="movie">
       <Link to={`/sessoes/${id}`}>
       <img
         src={posterURL}

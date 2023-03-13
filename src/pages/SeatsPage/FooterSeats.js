@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export default function FooterSeats({ title, posterURL,time,weekday }) {
   return (
-    <FooterContainer>
+    <FooterContainer data-test="footer">
       <div>
         <img src={posterURL} alt="poster" />
       </div>

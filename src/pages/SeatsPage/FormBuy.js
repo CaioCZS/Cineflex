@@ -13,15 +13,18 @@ export default function FormBuy({ selected }) {
         "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many";
       const body = { name: userName, cpf: userCPF, ids: selected };
       const promise = axios.post(URL, body);
-      promise.then(navigate("/sucesso")).catch(err => alert(err.response.data))
-    }else{
-        alert("Selecione pelo menos um assento")
+      promise
+        .then(navigate("/sucesso"))
+        .catch((err) => alert(err.response.data));
+    } else {
+      alert("Selecione pelo menos um assento");
     }
   }
   return (
     <FormContainer onSubmit={finishReserve}>
       <label htmlFor="name">Nome do Comprador:</label>
       <input
+        data-test="client-name"
         onChange={(e) => setUserName(e.target.value)}
         value={userName}
         id="name"
@@ -30,13 +33,14 @@ export default function FormBuy({ selected }) {
       />
       <label htmlFor="cpf">CPF do Comprador:</label>
       <input
+        data-test="client-cpf"
         onChange={(e) => setUserCPF(e.target.value)}
         value={userCPF}
         id="cpf"
         placeholder="Digite seu CPF..."
         required
       />
-      <button type="submit">Reservar Assento(s)</button>
+      <button data-test="book-seat-btn" type="submit">Reservar Assento(s)</button>
     </FormContainer>
   );
 }
